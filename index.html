@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="description">
+  <meta name="keywords" content="SE-MAE, Squeeze-and-Expansion, MAE">
+  <meta name="viewport" content="width=device-width, initial-scale=1.2">
+  <title>Squeeze-and-Expansion Masked Autoencoders are 
+    Strong Dynamic Scene Learners</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Morphing Tokens Draw Strong Masked Image Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Taekyung Kim</a><sup>*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Byeongho Heo</a>,
+            </span>
+            <span class="author-block">
+              <a href="">Dongyoon Han</a><sup>*</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">NAVER AI Lab,</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              
+              <!-- Model Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Model</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body has-text-centered">
+      <img id="teaser" src="./static/teaser/teaser_proj.png" alt="Teaser Image" style="height: auto; width: 800px;">
+      <!-- Flex container for the two images -->
+      <!--/<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">--> 
+        <!--/<img id="teaser" src="./static/teaser/envs_all.png" alt="Teaser Image" style="height: 450px; width: auto;">--> 
+        <!--/<img id="teaser" src="./static/teaser/comp_radar_chart.png" alt="Teaser Image" style="height: 450px; width: auto;">--> 
+      <!--/</div>--> 
+<!--/      <h2 class="subtitle has-text-centered">     --> 
+<!--/        Overall performance comparison                 --> 
+<!--/      </h2>     --> 
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Masked image modeling (MIM) has emerged as a promising approach for pre-training Vision Transformers (ViTs). 
+            MIMs predict masked tokens token-wise to recover target signals that are tokenized from images or generated by pre-trained models like vision-language models. 
+            While using tokenizers or pre-trained models is viable, they often offer spatially inconsistent supervision even for neighboring tokens, hindering models from learning discriminative representations. 
+            Our pilot study identifies spatial inconsistency in supervisory signals and suggests that addressing it can improve representation learning.  
+          </p>
+          <p>
+            Building upon this insight, we introduce <strong>Dynamic Token Morphing (DTM)</strong>, a novel method that dynamically aggregates tokens while preserving context to generate contextualized targets, thereby likely reducing spatial inconsistency. 
+            DTM is compatible with various SSL frameworks; we showcase significantly improved MIM results, barely introducing extra training costs. 
+            Our method facilitates MIM training by using more spatially consistent targets, resulting in improved training trends as evidenced by lower losses.
+          </p>
+          <p>
+            Experiments on ImageNet-1K and ADE20K demonstrate DTM's superiority, which surpasses complex state-of-the-art MIM methods. 
+            Furthermore, the evaluation of transfer learning on downstream tasks like iNaturalist, along with extensive empirical studies, supports DTM's effectiveness.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body has-text-centered">
+      <!-- Flex container for the two images -->
+      <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <img id="teaser" src="./static/figures/figure_motiv_comp.png" alt="Description" style="height: 300px; width: auto;">
+        <img id="teaser" src="./static/figures/figure_motiv_comp.png" alt="Motiv" style="height: 300px; width: auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body has-text-centered">
+        <img id="teaser" src="." alt="Framework" style="height: 500px; width: auto;">
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{kim2025dtm,
+  title={Morphing Tokens Draw Strong Masked Image Models},
+  author={Taekyung Kim and Byeongho Heo and Dongyoon Han},
+  booktitle={The Thirteenth International Conference on Learning Representations},
+  year={2025},
+  url={https://openreview.net/forum?id=d7q9IGj2p0}
+}</code></pre>
+  </div>
+</section>
+  
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
